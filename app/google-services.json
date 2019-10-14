@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "126075006371",
+    "firebase_url": "https://fir-appandroid-887ae.firebaseio.com",
+    "project_id": "fir-appandroid-887ae",
+    "storage_bucket": "fir-appandroid-887ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126075006371:android:f3b8de79f8c882b572be16",
+        "android_client_info": {
+          "package_name": "phamtanphat.ptp.khoaphamtraining.firebasedatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126075006371-229ptim9knsdn6voq4to37391ifr683c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "phamtanphat.ptp.khoaphamtraining.firebasedatabase",
+            "certificate_hash": "d95547cd6edaa45354c31ed18c7bef24959b3cd9"
+          }
+        },
+        {
+          "client_id": "126075006371-m5hgsff6o97a3r0l83i3sft93n69rvjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpKcxVTJqPy5TiZ6gat7oUAl0XUWqqYYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126075006371-m5hgsff6o97a3r0l83i3sft93n69rvjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
