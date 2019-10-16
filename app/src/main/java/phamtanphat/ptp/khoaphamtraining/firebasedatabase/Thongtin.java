@@ -3,9 +3,12 @@ import android.content.Intent;
 
 public class Thongtin {
     private String vitri;
-    private Integer sodienthoai;
+    private Long sodienthoai;
 
-    public Thongtin(String vitri, Integer sodienthoai) {
+    public Thongtin() {
+    }
+
+    public Thongtin(String vitri, Long sodienthoai) {
         this.vitri = vitri;
         this.sodienthoai = sodienthoai;
     }
@@ -18,11 +21,11 @@ public class Thongtin {
         this.vitri = vitri;
     }
 
-    public Integer getSodienthoai() {
+    public Long getSodienthoai() {
         return sodienthoai;
     }
 
-    public void setSodienthoai(Integer sodienthoai) {
+    public void setSodienthoai(Long sodienthoai) {
         this.sodienthoai = sodienthoai;
     }
 }

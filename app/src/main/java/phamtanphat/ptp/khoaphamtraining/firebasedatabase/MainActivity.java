@@ -128,22 +128,63 @@ public class MainActivity extends AppCompatActivity {
 
         // Đọc dữ liệu
         //1 : String
-        mMyRef.child("giangvien").addValueEventListener(new ValueEventListener() {
+//        mMyRef.child("giangvien").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+//                Log.d("BBB",dataSnapshot.getValue().toString());
+//                CountDownTimer countDownTimer = new CountDownTimer(2000,2000) {
+//                    @Override
+//                    public void onTick(long l) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//                        mMyRef.child("giangvien").setValue("Phạm Tấn Phát");
+//                    }
+//                };
+//                countDownTimer.start();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        // 3 : Arraylist
+//
+//        mMyRef.child("danhsachhocvien").addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                Log.d("BBB",dataSnapshot.getValue().toString());
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        // 4 : object
+        mMyRef.child("trungtam").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                Log.d("BBB",dataSnapshot.getValue().toString());
-                CountDownTimer countDownTimer = new CountDownTimer(2000,2000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        mMyRef.child("giangvien").setValue("Phạm Tấn Phát");
-                    }
-                };
-                countDownTimer.start();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Thongtin thongtin = dataSnapshot.getValue(Thongtin.class);
+                Log.d("BBB",thongtin.getVitri());
             }
 
             @Override
