@@ -1,21 +1,16 @@
 package phamtanphat.ptp.khoaphamtraining.firebasedatabase;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,17 +83,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> arrayNames = new ArrayList<>(
                 Arrays.asList("Teo","Ti","Tuan","Thuy","An")
         );
-        ArrayList<String> arrayNames1 = new ArrayList<>(
-                Arrays.asList("Teo","Ti","Tuan","Thuy","An")
-        );
-        for (String name : arrayNames){
-            if (name.equals("An")){
-                arrayNames.remove(name);
-                for (String name1 : arrayNames1){
-                    arrayNames1.remove(name1);
-                }
-            }
+
+        Iterator<String> stringIterator = arrayNames.iterator();
+
+        while (stringIterator.hasNext()){
+           while (stringIterator.hasNext()){
+               if (stringIterator.next().equals("Thuy")){
+                   stringIterator.remove();
+               }
+           }
         }
+
         Log.d("BBB",arrayNames.size() + "");
     //push hash map
         // Cach nhan lai gia tri
