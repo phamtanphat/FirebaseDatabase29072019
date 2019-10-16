@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -124,6 +125,18 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+        // 6 : push voi random id
+//        Hocvien:
+//            * randomId
+//        Ten : Sinh vien a
+//        Lop : HOc android
+//           * randomId
+//        Ten : Sinh vien b
+//        Lop : HOc android
+
+//        mMyRef.child("hocvien")
+//                .push()
+//                .setValue(new Hocvien("Nguyen Van C","Android"));
 
 
         // Đọc dữ liệu
@@ -180,18 +193,107 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
         // 4 : object
-        mMyRef.child("trungtam").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Thongtin thongtin = dataSnapshot.getValue(Thongtin.class);
-                Log.d("BBB",thongtin.getVitri());
-            }
+//        mMyRef.child("trungtam").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                Thongtin thongtin = dataSnapshot.getValue(Thongtin.class);
+//                Log.d("BBB",thongtin.getVitri());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        //6 : get arrayobject
+        final ArrayList<Hocvien> hocviens = new ArrayList<>();
+            mMyRef.child("hocvien").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Hocvien hocvien = dataSnapshot.getValue(Hocvien.class);
+                    final String myUserId = dataSnapshot.getKey();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Query query = mMyRef.child("hocvien").child(myUserId).orderByValue();
+                    query.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            if (dataSnapshot.getKey().equals("ten") && dataSnapshot.getValue().equals("Nguyen Van A")){
+                                Log.d("BBB","Có " + myUserId);
+                            }
+                        }
 
-            }
-        });
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    if (hocvien != null){
+                        hocviens.add(hocvien);
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+//            mMyRef.child("hocvien").addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                    Hocvien hocvien = dataSnapshot.getValue(Hocvien.class);
+//                    Log.d("BBB",hocvien.getTen());
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
     }
 
 }
